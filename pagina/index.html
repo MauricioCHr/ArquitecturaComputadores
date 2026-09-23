@@ -1,295 +1,384 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia Salud Vida</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-
-        header {
-            background-color: #168aad;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin-bottom: 10px;
-        }
-
-        nav {
-            background-color: #126782;
-            padding: 12px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .inicio {
-            text-align: center;
-            padding: 70px 20px;
-            background-color: white;
-        }
-
-        .inicio h2 {
-            color: #168aad;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .inicio p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .boton {
-            display: inline-block;
-            background-color: #168aad;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        section {
-            padding: 50px 10%;
-            background-color: white;
-            margin-top: 10px;
-        }
-
-        section h2 {
-            text-align: center;
-            color: #168aad;
-            margin-bottom: 25px;
-        }
-
-        .contenido {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            line-height: 1.7;
-        }
-
-        .servicios {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .servicio {
-            width: 250px;
-            padding: 25px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            background-color: #fafafa;
-        }
-
-        .servicio h3 {
-            color: #168aad;
-            margin-bottom: 10px;
-        }
-
-        .contacto {
-            text-align: center;
-            line-height: 2;
-        }
-
-        .empresa {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .empresa p {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #126782;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 10px;
-            }
-
-            .inicio h2 {
-                font-size: 25px;
-            }
-
-            section {
-                padding: 40px 5%;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmacia Salud Vida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+:root{--ink:#123039;--muted:#54707a;--teal:#168aad;--deep:#0e5567;--mint:#e3f3ef;--sky:#eef7fa;--line:#d8e6eb;--ok:#2a9d5c;--bad:#c0392b;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+:focus-visible{outline:3px solid #7fcde0;outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* Encabezado */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+header.scrolled{border-color:var(--line);box-shadow:0 4px 18px rgba(14,85,103,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--deep);text-decoration:none}
+.logo span{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--teal);color:#fff}
+.logo .ico{fill:currentColor;stroke:none;width:20px;height:20px}
+nav{display:flex;gap:4px}
+nav a{padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;color:var(--muted);transition:background .2s,color .2s}
+nav a:hover{background:var(--sky);color:var(--deep)}
+nav a.on{background:var(--deep);color:#fff}
+.menu{display:none;background:none;border:0;color:var(--deep);cursor:pointer;padding:6px}
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font:inherit;font-weight:700;text-decoration:none;border:2px solid var(--teal);background:var(--teal);color:#fff;cursor:pointer;transition:transform .15s,background .2s,color .2s}
+.btn:hover{background:var(--deep);border-color:var(--deep);transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--deep);border-color:var(--deep)}
+.btn.alt:hover{background:var(--deep);color:#fff}
+/* Inicio */
+.hero{background:var(--mint);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:72px}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.08;letter-spacing:-.02em;color:var(--deep);margin-bottom:18px}
+.hero p{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.estado{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;color:var(--deep);font-weight:700;font-size:14px}
+.estado i{width:10px;height:10px;border-radius:50%;background:#999}
+.estado.abierto i{background:var(--ok)}.estado.cerrado i{background:var(--bad)}
+.hero .txt>*{animation:in .6s both}
+.hero .txt>:nth-child(2){animation-delay:.1s}.hero .txt>:nth-child(3){animation-delay:.2s}.hero .txt>:nth-child(4){animation-delay:.3s}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.art{width:100%;height:auto}
+.art g{transition:transform .4s;transform-box:fill-box;transform-origin:center}
+.art:hover .c1{transform:rotate(-14deg) translate(-4px,4px)}.art:hover .c2{transform:rotate(14deg) translate(4px,-4px)}
+/* Secciones */
+section{padding:84px 0}
+.alt-bg{background:var(--sky)}
+h2{font-size:clamp(28px,4vw,36px);letter-spacing:-.01em;color:var(--deep);line-height:1.2;margin-bottom:10px}
+.sub{color:var(--muted);max-width:560px;margin-bottom:40px}
+h3{color:var(--deep);font-size:20px;margin-bottom:14px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.cols p{color:var(--muted);margin-bottom:14px}
+.vals{display:grid;gap:14px}
+.val{display:flex;gap:16px;align-items:center}
+.bub{width:52px;height:52px;border-radius:14px;background:var(--mint);color:var(--deep);display:grid;place-items:center;flex:none}
+.val b{display:block;color:var(--deep)}.val small{color:var(--muted);font-size:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:28px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--teal);transform:translateY(-4px)}
+.card .bub{margin-bottom:16px}.card p{color:var(--muted);font-size:15px}
+/* Contenido */
+.tools{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.search{position:relative;flex:1 1 240px}
+.search .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:20px;height:20px}
+input,textarea{width:100%;font:inherit;color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;transition:border-color .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px #d3edf4}
+.search input{padding-left:42px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted);transition:all .2s}
+.chip:hover{border-color:var(--teal);color:var(--deep)}
+.chip[aria-pressed=true]{background:var(--deep);border-color:var(--deep);color:#fff}
+.vacio{color:var(--muted);padding:20px 0}
+.faq{max-width:760px;margin:56px 0 28px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;color:var(--deep);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 4px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;line-height:1;color:var(--teal);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 4px 16px}
+.aviso{max-width:760px;display:flex;gap:12px;background:#fff8e6;border:1px solid #f0d58a;padding:14px 16px;border-radius:12px;font-size:14px}
+.aviso .ico{color:#b7791f}
+/* Galería y pasos */
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;margin-bottom:40px}
+.foto{position:relative;overflow:hidden;border-radius:var(--r);background:var(--mint)}
+.foto:first-child{grid-column:span 2;grid-row:span 2}
+.foto>svg,.foto>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.foto:hover>svg,.foto:hover>img{transform:scale(1.05)}
+.foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 16px;background:rgba(14,85,103,.88);color:#fff;font-size:14px;font-weight:700}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:48px}
+.paso{display:flex;gap:14px;align-items:flex-start}
+.paso span{width:38px;height:38px;border-radius:50%;background:var(--deep);color:#fff;font-weight:800;display:grid;place-items:center;flex:none}
+.paso b{display:block;color:var(--deep)}.paso small{color:var(--muted);font-size:14px}
+.cta-b{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--deep);color:#fff;border-radius:var(--r);padding:24px 28px;margin-top:40px}
+.cta-b b{font-size:18px}
+.cta-b .btn{background:#fff;color:var(--deep);border-color:#fff}
+.cta-b .btn:hover{background:var(--mint);border-color:var(--mint);color:var(--deep)}
+@media(max-width:800px){.galeria{grid-template-columns:1fr 1fr;grid-auto-rows:130px}.foto:first-child{grid-column:span 2;grid-row:span 1}}
+/* Botiquín interactivo */
+.botiq{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:56px;background:var(--sky);border-radius:var(--r);padding:36px}
+.botiq svg.ill{width:100%;height:auto}
+.prog{height:8px;background:#fff;border-radius:99px;overflow:hidden;margin-bottom:8px}
+#barra{height:100%;width:0;background:var(--teal);border-radius:99px;transition:width .3s}
+#cuenta{font-size:14px;font-weight:600;color:var(--deep);margin-bottom:14px}
+.lista{list-style:none;display:grid;gap:8px}
+.lista label{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;transition:border-color .2s,background .2s}
+.lista label:hover{border-color:var(--teal)}
+.lista label:has(input:checked){border-color:var(--teal);background:var(--mint)}
+.lista input{width:20px;height:20px;padding:0;accent-color:var(--teal);flex:none;box-shadow:none}
+@media(max-width:800px){.botiq{grid-template-columns:1fr;padding:24px;gap:24px}.botiq svg.ill{max-width:320px;margin:auto;order:-1}}
+/* Ficha empresarial */
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ficha div{background:#fff;padding:20px 24px}
+.ficha dt{font-size:13px;color:var(--muted);font-weight:600}.ficha dd{font-weight:700;color:var(--deep)}
+/* Contacto */
+.info{display:grid;gap:18px;margin-top:24px}
+.info div{display:flex;gap:14px;align-items:center}.info b{display:block;color:var(--deep)}
+form{display:grid;gap:14px;background:var(--sky);padding:28px;border-radius:var(--r)}
+label{font-weight:600;font-size:14px;color:var(--deep);display:grid;gap:6px}
+textarea{min-height:110px;resize:vertical}
+#ok{font-size:14px;color:var(--ok);font-weight:600}
+/* Pie */
+footer{background:var(--deep);color:#d6ebf1;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
+.top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--teal);color:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 6px 18px rgba(14,85,103,.3);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s}
+.top.v{opacity:1;pointer-events:auto}.top:hover{transform:translateY(-3px)}
+@media(max-width:800px){
+.hero .wrap,.cols{grid-template-columns:1fr;gap:32px}.hero .wrap{padding-top:44px;padding-bottom:44px}
+.art{max-width:340px;margin:auto}section{padding:60px 0}
+.menu{display:block}
+nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:#fff;padding:10px 24px 20px;border-bottom:1px solid var(--line)}
+nav.open{display:flex}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <h1>Farmacia Salud Vida</h1>
-        <p>Tu salud es nuestra prioridad</p>
-    </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="cruz" viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></symbol>
+<symbol id="capsula" viewBox="0 0 24 24"><path d="M10.5 20.5a5 5 0 0 1-7-7l10-10a5 5 0 0 1 7 7z"/><path d="M8.5 8.5l7 7"/></symbol>
+<symbol id="gota" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+<symbol id="corazon" viewBox="0 0 24 24"><path d="M12 20s-8-4.6-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.400 12 20 12 20z"/></symbol>
+<symbol id="botiquin" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M12 10.5v6M9 13.5h6"/></symbol>
+<symbol id="hoja" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l8-8"/></symbol>
+<symbol id="familia" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M14 20a4 4 0 0 1 7.500 0"/></symbol>
+<symbol id="reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="aviso" viewBox="0 0 24 24"><path d="M12 3l9.500 17h-19z"/><path d="M12 10v4.500M12 17.500v.01"/></symbol>
+<symbol id="tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="correo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="escudo" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.500 8.500-7 10-3.500-1.500-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="arriba" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+</svg>
 
-    <!-- MENÚ -->
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#empresa">Tipo Empresarial</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+<header id="top">
+<div class="wrap bar">
+<a class="logo" href="#inicio"><span><svg class="ico"><use href="#cruz"/></svg></span>Salud Vida</a>
+<button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false"><svg class="ico"><use href="#menu"/></svg></button>
+<nav id="nav">
+<a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#contenido">Contenido</a><a href="#empresa">Empresa</a><a href="#contacto">Contacto</a>
+</nav>
+</div>
+</header>
 
-    <!-- INICIO -->
-    <section class="inicio" id="inicio">
-        <h2>Bienvenidos a Farmacia Salud Vida</h2>
+<main>
+<section class="hero" id="inicio" style="padding:0">
+<div class="wrap">
+<div class="txt">
+<h1>Tu salud es nuestra prioridad</h1>
+<p>Productos farmacéuticos y servicios para cuidar la salud y el bienestar de tu familia, con atención cercana y responsable.</p>
+<div class="btns"><a class="btn" href="#contacto">Contáctanos</a><a class="btn alt" href="#contenido">Ver productos</a></div>
+<span class="estado" id="estado" role="status"><i></i><span id="estado-t">Lunes a sábado, 8:00 AM - 8:00 PM</span></span>
+</div>
+<svg class="art" viewBox="0 0 400 360" role="img" aria-label="Cruz de farmacia rodeada de cápsulas y una hoja">
+<circle cx="200" cy="180" r="140" fill="#fff"/>
+<circle cx="200" cy="180" r="110" fill="#168aad"/>
+<path d="M184 120h32v44h44v32h-44v44h-32v-44h-44v-32h44z" fill="#fff"/>
+<g class="c1"><g transform="rotate(-35 74 242)"><rect x="36" y="226" width="76" height="32" rx="16" fill="#fff" stroke="#0e5567" stroke-width="3"/><path d="M74 226H52a16 16 0 0 0 0 32h22z" fill="#0e5567"/></g></g>
+<g class="c2"><g transform="rotate(30 330 110)"><rect x="292" y="94" width="76" height="32" rx="16" fill="#fff" stroke="#0e5567" stroke-width="3"/><path d="M330 94h-22a16 16 0 0 0 0 32h22z" fill="#0e5567"/></g></g>
+<path d="M330 250c-30 6-48 26-50 56 30-2 50-22 50-56z" fill="#52b69a"/><path d="M330 250l-38 44" stroke="#fff" stroke-width="2.500" fill="none"/>
+<circle cx="70" cy="90" r="9" fill="#52b69a"/><circle cx="345" cy="205" r="6" fill="#0e5567"/>
+</svg>
+</div>
+</section>
 
-        <p>
-            Ofrecemos productos farmacéuticos y servicios
-            para cuidar la salud y el bienestar de nuestros clientes.
-        </p>
+<section id="nosotros">
+<div class="wrap cols">
+<div>
+<h2>Nosotros</h2>
+<p>Somos una farmacia dedicada a brindar atención responsable y cercana. Contamos con productos de salud, higiene y cuidado personal.</p>
+<p>Nuestro objetivo es ofrecer un servicio confiable, amable y de calidad, ayudándote a encontrar los productos que necesitas.</p>
+</div>
+<div class="vals">
+<div class="val"><div class="bub"><svg class="ico"><use href="#escudo"/></svg></div><div><b>Atención responsable</b><small>Información clara sobre cada producto.</small></div></div>
+<div class="val"><div class="bub"><svg class="ico"><use href="#familia"/></svg></div><div><b>Trato cercano</b><small>Te atendemos como a un vecino.</small></div></div>
+<div class="val"><div class="bub"><svg class="ico"><use href="#capsula"/></svg></div><div><b>Productos de calidad</b><small>Salud, higiene y cuidado personal.</small></div></div>
+</div>
+</div>
+</section>
 
-        <a href="#contacto" class="boton">Contáctanos</a>
-    </section>
+<section id="servicios" class="alt-bg">
+<div class="wrap">
+<h2>Servicios</h2>
+<p class="sub">Lo que hacemos por tu bienestar todos los días.</p>
+<div class="grid3">
+<div class="card"><div class="bub"><svg class="ico"><use href="#capsula"/></svg></div><h3>Venta de medicamentos</h3><p>Diferentes productos farmacéuticos para el cuidado de la salud.</p></div>
+<div class="card"><div class="bub"><svg class="ico"><use href="#chat"/></svg></div><h3>Orientación</h3><p>Información general sobre nuestros productos y servicios.</p></div>
+<div class="card"><div class="bub"><svg class="ico"><use href="#corazon"/></svg></div><h3>Cuidado personal</h3><p>Productos de higiene y cuidado personal para toda la familia.</p></div>
+</div>
+</div>
+</section>
 
-    <!-- NOSOTROS -->
-    <section id="nosotros">
-        <h2>Nosotros</h2>
+<section id="contenido">
+<div class="wrap">
+<h2>Contenido</h2>
+<p class="sub">Conoce nuestros productos, cómo te atendemos y resuelve tus dudas.</p>
+<div class="galeria">
+<figure class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#e3f3ef"/><rect y="250" width="400" height="50" fill="#cfe6e0"/>
+<rect x="60" y="80" width="280" height="170" fill="#fff"/><rect x="50" y="80" width="300" height="40" fill="#168aad"/><rect x="110" y="80" width="60" height="40" fill="#0e5567"/><rect x="230" y="80" width="60" height="40" fill="#0e5567"/>
+<path d="M192 32h16v12h12v16h-12v12h-16V60h-12V44h12z" fill="#168aad"/>
+<rect x="170" y="150" width="60" height="100" rx="4" fill="#168aad"/><rect x="80" y="140" width="70" height="70" rx="6" fill="#eef7fa" stroke="#0e5567" stroke-width="3"/><rect x="250" y="140" width="70" height="70" rx="6" fill="#eef7fa" stroke="#0e5567" stroke-width="3"/>
+<path d="M108 156h14v13h13v14h-13v13h-14v-13H95v-14h13z" fill="#52b69a"/><path d="M278 156h14v13h13v14h-13v13h-14v-13h-13v-14h13z" fill="#52b69a"/></svg><img src="img/farmacia.jpg" alt="Fachada de Farmacia Salud Vida" loading="lazy" onerror="this.remove()"><figcaption>Nuestra farmacia</figcaption></figure>
+<figure class="foto"><svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="150" fill="#eef7fa"/><rect x="10" y="100" width="180" height="6" fill="#0e5567"/>
+<rect x="34" y="48" width="20" height="10" fill="#0e5567"/><rect x="30" y="58" width="28" height="42" rx="5" fill="#fff" stroke="#0e5567" stroke-width="2"/>
+<rect x="76" y="34" width="24" height="10" fill="#0e5567"/><rect x="72" y="44" width="32" height="56" rx="6" fill="#52b69a"/>
+<rect x="118" y="64" width="52" height="36" rx="4" fill="#168aad"/><path d="M141 72h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="#fff"/></svg><img src="img/medicamentos.jpg" alt="Estantes de medicamentos" loading="lazy" onerror="this.remove()"><figcaption>Medicamentos</figcaption></figure>
+<figure class="foto"><svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="150" fill="#e3f3ef"/>
+<rect x="46" y="36" width="28" height="14" rx="3" fill="#0e5567"/><rect x="40" y="50" width="40" height="70" rx="6" fill="#168aad"/>
+<rect x="127" y="44" width="26" height="6" rx="3" fill="#0e5567"/><rect x="127" y="48" width="10" height="16" fill="#0e5567"/><rect x="110" y="64" width="44" height="56" rx="8" fill="#fff" stroke="#0e5567" stroke-width="2"/>
+<path d="M170 30s12 13 12 22a12 12 0 0 1-24 0c0-9 12-22 12-22z" fill="#52b69a"/></svg><img src="img/cuidado-personal.jpg" alt="Productos de cuidado personal" loading="lazy" onerror="this.remove()"><figcaption>Cuidado personal</figcaption></figure>
+<figure class="foto"><svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="150" fill="#eef7fa"/>
+<rect x="66" y="42" width="58" height="16" rx="4" fill="#0e5567"/><rect x="60" y="56" width="70" height="70" rx="12" fill="#fff" stroke="#0e5567" stroke-width="3"/>
+<rect x="70" y="76" width="50" height="30" rx="4" fill="#52b69a"/><path d="M95 98c-10 0-14-6-14-12 8 0 14 4 14 12z" fill="#fff"/>
+<g transform="rotate(-25 152 112)"><rect x="132" y="102" width="40" height="20" rx="10" fill="#fff" stroke="#0e5567" stroke-width="2"/><path d="M152 102h-10a10 10 0 0 0 0 20h10z" fill="#0e5567"/></g></svg><img src="img/vitaminas.jpg" alt="Vitaminas y complementos" loading="lazy" onerror="this.remove()"><figcaption>Vitaminas y bienestar</figcaption></figure>
+</div>
 
-        <div class="contenido">
-            <p>
-                Somos una farmacia dedicada a brindar atención
-                responsable y cercana a nuestros clientes.
-                Contamos con productos de salud, higiene y
-                cuidado personal.
-            </p>
+<h3>Así te atendemos</h3>
+<div class="pasos">
+<div class="paso"><span>1</span><div><b>Cuéntanos qué necesitas</b><small>Dinos el producto o tu duda.</small></div></div>
+<div class="paso"><span>2</span><div><b>Te orientamos</b><small>Información general sobre el producto.</small></div></div>
+<div class="paso"><span>3</span><div><b>Llevas tu producto</b><small>Con todo claro para usarlo bien.</small></div></div>
+</div>
 
-            <br>
+<h3>Categorías de productos</h3>
+<div class="tools">
+<div class="search"><svg class="ico"><use href="#lupa"/></svg><input id="q" type="search" placeholder="Buscar categoría" aria-label="Buscar categoría"></div>
+<div class="chips" id="chips">
+<button class="chip" data-c="all" aria-pressed="true">Todos</button><button class="chip" data-c="salud" aria-pressed="false">Salud</button><button class="chip" data-c="higiene" aria-pressed="false">Higiene y cuidado</button><button class="chip" data-c="familia" aria-pressed="false">Familia</button>
+</div>
+</div>
+<div class="grid3">
+<div class="card prod" data-cat="salud"><div class="bub"><svg class="ico"><use href="#capsula"/></svg></div><h3>Medicamentos</h3><p>Productos farmacéuticos para el cuidado de la salud. Algunos requieren fórmula médica.</p></div>
+<div class="card prod" data-cat="salud"><div class="bub"><svg class="ico"><use href="#botiquin"/></svg></div><h3>Primeros auxilios</h3><p>Elementos básicos para armar y reponer el botiquín de casa.</p></div>
+<div class="card prod" data-cat="salud"><div class="bub"><svg class="ico"><use href="#hoja"/></svg></div><h3>Vitaminas y bienestar</h3><p>Complementos para acompañar una rutina saludable.</p></div>
+<div class="card prod" data-cat="higiene"><div class="bub"><svg class="ico"><use href="#gota"/></svg></div><h3>Higiene</h3><p>Artículos de aseo y limpieza para el día a día del hogar.</p></div>
+<div class="card prod" data-cat="higiene"><div class="bub"><svg class="ico"><use href="#corazon"/></svg></div><h3>Cuidado personal</h3><p>Productos para el cuidado de la piel, el cabello y el bienestar.</p></div>
+<div class="card prod" data-cat="familia"><div class="bub"><svg class="ico"><use href="#familia"/></svg></div><h3>Cuidado familiar</h3><p>Opciones para cada integrante de la familia, de niños a adultos.</p></div>
+</div>
+<p class="vacio" id="vacio" hidden>No encontramos esa categoría. Llámanos y te ayudamos a encontrar lo que buscas.</p>
 
-            <p>
-                Nuestro objetivo es ofrecer un servicio confiable,
-                amable y de calidad, ayudando a nuestros clientes
-                a encontrar los productos que necesitan.
-            </p>
-        </div>
-    </section>
+<div class="cta-b"><b>¿No encuentras lo que buscas? Llámanos al 300 123 4567</b><a class="btn" href="tel:+573001234567"><svg class="ico"><use href="#tel"/></svg>Llamar ahora</a></div>
 
-    <!-- SERVICIOS -->
-    <section id="servicios">
-        <h2>Servicios</h2>
+<div class="botiq">
+<div>
+<h3>Arma tu botiquín básico</h3>
+<p style="color:var(--muted);margin-bottom:16px">Marca lo que ya tienes en casa y mira qué te falta.</p>
+<div class="prog"><div id="barra"></div></div>
+<p id="cuenta" role="status">0 de 6 elementos</p>
+<ul class="lista" id="lista">
+<li><label><input type="checkbox"> Gasas y vendas</label></li>
+<li><label><input type="checkbox"> Antiséptico</label></li>
+<li><label><input type="checkbox"> Termómetro</label></li>
+<li><label><input type="checkbox"> Curitas</label></li>
+<li><label><input type="checkbox"> Tijeras pequeñas</label></li>
+<li><label><input type="checkbox"> Medicamentos recomendados por tu médico</label></li>
+</ul>
+</div>
+<svg class="ill" viewBox="0 0 360 280" role="img" aria-label="Botiquín con cruz, frasco de medicina y una hoja">
+<rect width="360" height="280" rx="18" fill="#e3f3ef"/>
+<rect x="165" y="70" width="70" height="44" rx="12" fill="none" stroke="#0e5567" stroke-width="10"/>
+<rect x="100" y="100" width="200" height="130" rx="18" fill="#168aad"/>
+<path d="M188 135h24v20h20v24h-20v20h-24v-20h-20v-24h20z" fill="#fff"/>
+<rect x="46" y="140" width="34" height="16" rx="4" fill="#0e5567"/>
+<rect x="40" y="154" width="46" height="76" rx="9" fill="#fff" stroke="#0e5567" stroke-width="3"/>
+<rect x="46" y="176" width="34" height="30" rx="3" fill="#52b69a"/>
+<path d="M322 130c-24 4-38 20-40 44 24-2 38-18 40-44z" fill="#52b69a"/><path d="M322 130l-30 34" stroke="#fff" stroke-width="2.5" fill="none"/>
+<g transform="rotate(-25 320 220)"><rect x="288" y="206" width="64" height="28" rx="14" fill="#fff" stroke="#0e5567" stroke-width="3"/><path d="M320 206h-18a14 14 0 0 0 0 28h18z" fill="#0e5567"/></g>
+</svg>
+</div>
 
-        <div class="servicios">
+<div class="faq">
+<h3>Preguntas frecuentes</h3>
+<details><summary>¿Todos los medicamentos requieren fórmula médica?</summary><p>No. Algunos se venden sin fórmula y otros solo con prescripción de un profesional de la salud. Pregúntanos y te indicamos cuál es el caso.</p></details>
+<details><summary>¿Cómo debo guardar mis medicamentos en casa?</summary><p>En un lugar fresco, seco, lejos de la luz directa y fuera del alcance de los niños. Revisa siempre la fecha de vencimiento.</p></details>
+<details><summary>¿Qué debe tener un botiquín básico?</summary><p>Gasas, vendas, antiséptico, termómetro, curitas y los medicamentos que tu médico haya recomendado.</p></details>
+<details><summary>¿Cuál es el horario de atención?</summary><p>Lunes a sábado, de 8:00 AM a 8:00 PM. Puedes llamarnos al 300 123 4567.</p></details>
+</div>
+<div class="aviso"><svg class="ico"><use href="#aviso"/></svg><p>La información de esta página es general y no reemplaza la consulta médica. Ante cualquier síntoma o duda sobre un tratamiento, consulta a un profesional de la salud.</p></div>
+</div>
+</section>
 
-            <div class="servicio">
-                <h3>Venta de medicamentos</h3>
-                <p>
-                    Contamos con diferentes productos
-                    farmacéuticos para el cuidado de la salud.
-                </p>
-            </div>
+<section id="empresa" class="alt-bg">
+<div class="wrap">
+<h2>Tipo empresarial</h2>
+<p class="sub">Ficha de la empresa.</p>
+<dl class="ficha">
+<div><dt>Nombre</dt><dd>Farmacia Salud Vida</dd></div>
+<div><dt>Tipo de empresa</dt><dd>Empresa comercial</dd></div>
+<div><dt>Sector</dt><dd>Salud y comercio farmacéutico</dd></div>
+<div><dt>Tamaño</dt><dd>Pequeña empresa</dd></div>
+<div><dt>Actividad económica</dt><dd>Comercialización de productos farmacéuticos, productos de higiene y cuidado personal.</dd></div>
+<div><dt>Objetivo</dt><dd>Ofrecer productos y servicios relacionados con el cuidado de la salud de la comunidad.</dd></div>
+</dl>
+</div>
+</section>
 
-            <div class="servicio">
-                <h3>Orientación</h3>
-                <p>
-                    Brindamos información general sobre
-                    nuestros productos y servicios.
-                </p>
-            </div>
+<section id="contacto">
+<div class="wrap cols">
+<div>
+<h2>Contacto</h2>
+<p>Escríbenos o visítanos. Te atendemos con gusto.</p>
+<div class="info">
+<div><div class="bub"><svg class="ico"><use href="#tel"/></svg></div><div><b>Teléfono</b>300 123 4567</div></div>
+<div><div class="bub"><svg class="ico"><use href="#correo"/></svg></div><div><b>Correo</b>contacto@saludvida.com</div></div>
+<div><div class="bub"><svg class="ico"><use href="#pin"/></svg></div><div><b>Dirección</b>Calle Principal #10-20</div></div>
+<div><div class="bub"><svg class="ico"><use href="#reloj"/></svg></div><div><b>Horario</b>Lunes a sábado, 8:00 AM - 8:00 PM</div></div>
+</div>
+</div>
+<form id="f">
+<h3>Envíanos un mensaje</h3>
+<label>Nombre<input name="n" required autocomplete="name"></label>
+<label>Mensaje<textarea name="m" required></textarea></label>
+<button class="btn" type="submit">Enviar mensaje</button>
+<p id="ok" role="status"></p>
+</form>
+</div>
+</section>
+</main>
 
-            <div class="servicio">
-                <h3>Cuidado personal</h3>
-                <p>
-                    Productos de higiene y cuidado
-                    personal para toda la familia.
-                </p>
-            </div>
+<footer><div class="wrap"><span>&copy; 2026 Farmacia Salud Vida - Todos los derechos reservados</span><span>Tu salud es nuestra prioridad</span></div></footer>
+<button class="top" id="arriba" aria-label="Volver arriba"><svg class="ico"><use href="#arriba"/></svg></button>
 
-        </div>
-    </section>
-
-    <!-- TIPO EMPRESARIAL -->
-    <section id="empresa">
-        <h2>Tipo Empresarial</h2>
-
-        <div class="empresa">
-
-            <p>
-                <strong>Nombre:</strong> Farmacia Salud Vida
-            </p>
-
-            <p>
-                <strong>Tipo de empresa:</strong> Empresa comercial
-            </p>
-
-            <p>
-                <strong>Sector:</strong> Salud y comercio farmacéutico
-            </p>
-
-            <p>
-                <strong>Actividad económica:</strong>
-                Comercialización de productos farmacéuticos,
-                productos de higiene y cuidado personal.
-            </p>
-
-            <p>
-                <strong>Tamaño:</strong> Pequeña empresa
-            </p>
-
-            <p>
-                <strong>Objetivo:</strong>
-                Ofrecer productos y servicios relacionados
-                con el cuidado de la salud de la comunidad.
-            </p>
-
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-
-        <div class="contacto">
-            <p><strong>Teléfono:</strong> 300 123 4567</p>
-            <p><strong>Correo:</strong> contacto@saludvida.com</p>
-            <p><strong>Dirección:</strong> Calle Principal #10-20</p>
-            <p><strong>Horario:</strong> Lunes a sábado, 8:00 AM - 8:00 PM</p>
-        </div>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        <p>&copy; 2026 Farmacia Salud Vida - Todos los derechos reservados</p>
-    </footer>
-
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},all=function(s){return [].slice.call(document.querySelectorAll(s))};
+var h=$("header"),up=$("#arriba"),nav=$("#nav"),mb=$("#menu");
+function scroll(){h.classList.toggle("scrolled",scrollY>10);up.classList.toggle("v",scrollY>500)}
+addEventListener("scroll",scroll,{passive:true});scroll();
+up.onclick=function(){scrollTo({top:0})};
+mb.onclick=function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
+all("nav a").forEach(function(a){a.onclick=function(){nav.classList.remove("open");mb.setAttribute("aria-expanded","false")}});
+/* enlace activo */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)all("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})})},{rootMargin:"-45% 0px -50% 0px"});
+all("main [id]").forEach(function(s){io.observe(s)});
+/* abierto / cerrado (hora de Colombia) */
+try{var p=new Intl.DateTimeFormat("en-US",{timeZone:"America/Bogota",weekday:"short",hour:"numeric",hour12:false}).formatToParts(new Date());
+var d=p.filter(function(x){return x.type==="weekday"})[0].value,hr=parseInt(p.filter(function(x){return x.type==="hour"})[0].value,10)%24,ab=d!=="Sun"&&hr>=8&&hr<20;
+$("#estado").className="estado "+(ab?"abierto":"cerrado");
+$("#estado-t").textContent=(ab?"Abierto ahora":"Cerrado ahora")+" · Lunes a sábado, 8:00 AM - 8:00 PM"}catch(e){}
+/* filtro de categorías */
+var cs=all(".prod"),q=$("#q"),cat="all";
+function filtrar(){var t=q.value.trim().toLowerCase(),n=0;cs.forEach(function(c){var ok=(cat==="all"||c.dataset.cat===cat)&&c.textContent.toLowerCase().indexOf(t)>-1;c.hidden=!ok;if(ok)n++});$("#vacio").hidden=n>0}
+q.oninput=filtrar;
+all(".chip").forEach(function(b){b.onclick=function(){cat=b.dataset.c;all(".chip").forEach(function(x){x.setAttribute("aria-pressed",x===b)});filtrar()}});
+/* botiquín */
+var ck=all("#lista input");function cuenta(){var n=ck.filter(function(c){return c.checked}).length;
+$("#barra").style.width=(n/ck.length*100)+"%";
+$("#cuenta").textContent=n===ck.length?"Tu botiquín está completo. Revisa siempre las fechas de vencimiento.":n+" de "+ck.length+" elementos"}
+ck.forEach(function(c){c.onchange=cuenta});
+/* formulario: abre el correo con el mensaje listo */
+var f=$("#f");f.onsubmit=function(e){e.preventDefault();var d=new FormData(f);
+location.href="mailto:contacto@saludvida.com?subject="+encodeURIComponent("Consulta de "+d.get("n"))+"&body="+encodeURIComponent(d.get("m"));
+$("#ok").textContent="Se abrió tu aplicación de correo con el mensaje listo para enviar."};
+})();
+</script>
 </body>
 </html>
-```
